@@ -81,7 +81,7 @@ function funcion_agregar2()
        "   '$_POST[txtFecIngreso]', '$_POST[txtCorreo]', '$_POST[txtSueldo]') ");
     
     $con->close();
-    header("Location: http://localhost/siete/empleados.php");
+    header("Location: http://localhost/empleados_v3/empleados.php");
 }
 
 function funcion_borrar($clave)
@@ -90,7 +90,7 @@ function funcion_borrar($clave)
     $con->query("DELETE FROM empleados WHERE Clave = $clave ");
     
     $con->close();
-    header("Location: http://localhost/siete/empleados.php");
+    header("Location: http://localhost/empleados_v3/empleados.php");
 }
 
 
@@ -144,7 +144,7 @@ function funcion_modificar2()
     move_uploaded_file($_FILES['txtFile']['tmp_name'], 'fotos/' . $arch);
 
     $con->close();
-    header("Location: http://localhost/siete/empleados.php");
+    header("Location: http://localhost/empleados_v3/empleados.php");
 }
 
 function funcion_registro()
@@ -154,10 +154,10 @@ function funcion_registro()
 <table border="0">
     <form action="empleados.php?proc=REGISTRO2" method="POST">
         <tr><td>Nombre</td><td><input type="TEXT" name="txtNombre"></td></tr>
-        <tr><td>Usuario</td><td><input type="EMAIL" name="txtUsr" placeholder="pon una contraseña"></td></tr>
+        <tr><td>Usuario</td><td><input type="EMAIL" name="txtUsr" placeholder="example@example.com"></td></tr>
         <tr height="20px"><td colspan="2"> </td></tr>
-        <tr><td>Contraseña</td><td><input type="PASSWORD" name="txtPswd1"></td></tr>
-        <tr><td>Verificacion</td><td><input type="PASSWORD" name="txtPswd2"></td></tr>
+        <tr><td>Contraseña</td><td><input type="PASSWORD" name="txtPswd1" placeholder="pon una contraseña"></td></tr>
+        <tr><td>Verificacion</td><td><input type="PASSWORD" name="txtPswd2" placeholder="verifica la contraseña"></td></tr>
         <tr height="20px"><td colspan="2"> </td></tr>
         <tr><td colspan="2" align="center"><input type="submit" value="registrar"></td></tr>
     </form>
@@ -170,7 +170,7 @@ function funcion_registro2()
 {
     if ($_POST['txtPswd1'] != $_POST['txtPswd2'])
     {
-       header("Location: http://localhost/siete/empleados.php?proc=ERROR_PSWD");
+       header("Location: http://localhost/empleados_v3/empleados.php?proc=ERROR_PSWD");
        return;
     }
 
@@ -182,7 +182,7 @@ function funcion_registro2()
 
     if ($encontrados > 0)
     {
-        header("Location: http://localhost/siete/empleados.php?proc=ERROR_USR");
+        header("Location: http://localhost/empleados_v3/empleados.php?proc=ERROR_USR");
         return;
     }
 
@@ -193,7 +193,7 @@ function funcion_registro2()
        "     Password = '$encript' "); 
     
     $con->close();
-    header("Location: http://localhost/siete");
+    header("Location: http://localhost/empleados_v3");
 }
 
 function funcion_error($tipo)
@@ -205,7 +205,7 @@ function funcion_error($tipo)
          echo "<font color='RED'>";
          echo "Error: la contraseña y su verificacion no son iguales<br>";
          echo "</font>";
-         echo "<a href='http://localhost/siete'>regresar</a>";
+         echo "<a href='http://localhost/empleados_v3'>regresar</a>";
          echo "</center>";
          break;
 
@@ -214,7 +214,7 @@ function funcion_error($tipo)
         echo "<font color='RED'>";
         echo "Error: El usuario YA existe, intenta con otro....<br>";
         echo "</font>";
-        echo "<a href='http://localhost/siete'>regresar</a>";
+        echo "<a href='http://localhost/empleados_v3'>regresar</a>";
         echo "</center>";
         break;
   }
