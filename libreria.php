@@ -220,6 +220,21 @@ function funcion_error($tipo)
   }
 
 }
+function verificar_usuario()
+{
+    $usuario=$_POST["txtUsr"];
+    $pswrd=md5($_POST["txtPswd"]);
+    $con=conexion();
+    $verify=$con->query('SELECT Nombre FROM login WHERE Usuario='.$usuario.' AND Password= '.$pswrd);
+    if($verify->num_rows==1){
+        return;
+    }
+    else if($verify->num_rows==0){
+        
+    }
+}
+function error_login(){
 
+}
 ?>
 
