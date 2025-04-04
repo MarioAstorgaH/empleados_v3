@@ -36,7 +36,7 @@ function funcion_tabla()
             col_td("150px", "<a href='empleados.php?proc=MODIFICAR&k=$fila[Clave]'>" . $fila['Nombre'] . "</a>");  
             col_td("200px", $fila['Correo']);
             col_td("100px", $fila['Sueldo']);
-            col_td("30px", "<a href='empleados.php?proc=BORRAR&k=$fila[Clave]'><img src='basura.png'></a>");
+            col_td("30px", "<a href='empleados.php?proc=BORRAR&k=$fila[Clave]' class='btn-borrar'><img src='basura.png'></a>");
             echo "</tr>";
         }    
         
