@@ -217,6 +217,15 @@ function funcion_error($tipo)
         echo "<a href='http://localhost/empleados_v3'>regresar</a>";
         echo "</center>";
         break;
+
+        case 3 :
+            echo "<center>";
+            echo "<font color='RED'>";
+            echo "Error: El usuario o la contraseña son incorrectos, intenta con otro....<br>";
+            echo "</font>";
+            echo "<a href='http://localhost/empleados_v3'>regresar</a>";
+            echo "</center>";
+            break;
   }
 
 }
@@ -225,16 +234,14 @@ function verificar_usuario()
     $usuario=$_POST["txtUsr"];
     $pswrd=md5($_POST["txtPswd"]);
     $con=conexion();
-    $verify=$con->query('SELECT Nombre FROM login WHERE Usuario='.$usuario.' AND Password= '.$pswrd);
+    $verify=$con->query("SELECT Nombre FROM login WHERE BINARY Usuario= '$usuario' AND login.Password='$pswrd'");
     if($verify->num_rows==1){
-        return;
+        return true;
     }
     else if($verify->num_rows==0){
-        
+        header("Location: http://localhost/empleados_v3/empleados.php?proc=ERROR_LOGIN");
+        return;
     }
-}
-function error_login(){
-
 }
 ?>
 

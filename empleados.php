@@ -14,7 +14,10 @@ include("libreria.php");
 
 if (!isset($_GET["proc"]))
 {
-    funcion_tabla();
+    if(verificar_usuario()==true){
+        funcion_tabla();
+    }
+
 }
 else
 {
@@ -55,7 +58,7 @@ else
             funcion_error(2);
             break;
         case "ERROR_LOGIN":
-            
+            funcion_error(3);
             break;
     }
 }
